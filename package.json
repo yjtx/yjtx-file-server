@@ -1,0 +1,34 @@
+{
+	"name": "yjtx",
+	"author": "yjtx",
+	"homepage": "http://yjtxlib.com/",
+	"version": "1.0.0",
+	"description": "",
+	"keywords": [
+		"html",
+		"run"
+	],
+	"repository" : { 
+		"type" : "git",	
+		"url" : "https://github.com/Microsoft/TypeScript.git"  
+	},
+	"preferGlobal" : true,
+	"main" : "./bin/typescriptServices.js",
+	"bin" : { 
+		"tsc" : "./bin/tsc" 
+	},
+	"engines" : { 
+		"node" : ">=0.8.0" 
+	},
+	"devDependencies": {
+		"jake" : "latest",
+		"mocha" : "latest",
+		"chai" : "latest",
+		"browserify" : "latest",
+		"istanbul": "latest",
+		"codeclimate-test-reporter": "latest"
+	},
+	"scripts": {
+		"test": "jake generate-code-coverage"
+	}
+}

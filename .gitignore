@@ -1,0 +1,6 @@
+.idea/
+
+.DS_Store
+.[Tt]humb
+node_modules
+gulpfile.js

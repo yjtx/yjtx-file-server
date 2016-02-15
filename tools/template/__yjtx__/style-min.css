@@ -1,0 +1,18 @@
+﻿html,body,div,span,a,img,ul,li{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align: middle;color:#ffffff}
+html,body {background:#363e45}
+
+ol,ul{list-style:none;}
+.none{display:none!important;}
+.visible{visibility:visible!important;}
+.hidden{visibility:hidden!important;}
+
+a{text-decoration:none;}
+body{-webkit-tap-highlight-color:rgba(0,0,0,0);-webkit-touch-callout:none;}
+body,.bg,.score_list .list_item{background:#000000;}
+
+.list_title{border-bottom:1px solid #000000;font-size:24px;height:30px;line-height:30px;padding:10px 13px;}
+.list_title .txt{font-weight:bold;}
+
+.list_div_1{background-color:#363e45;}
+.list_div_1{background-color:#363e45;}
+.list_div_1:hover{background-color:#4D5E6C;}
