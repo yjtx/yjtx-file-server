@@ -28,8 +28,19 @@ var ProxyServer = (function () {
     };
     ProxyServer.prototype.stopServer = function () {
     };
+    ProxyServer.prototype.getPath = function (url) {
+        var index1 = url.indexOf("?");
+        var index2 = url.indexOf("#");
+        if (index1 < 0) {
+            index1 = url.length;
+        }
+        if (index2 < 0) {
+            index2 = url.length;
+        }
+        return url.substring(0, Math.min(index1, index2));
+    };
     ProxyServer.prototype.handleRequest = function (request, response) {
-        var tempUrl = file.joinPath(this.localUrl, request.url);
+        var tempUrl = file.joinPath(this.localUrl, this.getPath(request.url));
         if (request.url.indexOf("__yjtx__") >= 0) {
             this.localFiles.onGet(file.joinPath(params.getParserRoot(), "template", request.url.substring(request.url.indexOf("__yjtx__"))), null, response);
             return;
