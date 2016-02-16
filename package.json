@@ -10,25 +10,14 @@
 	],
 	"repository" : { 
 		"type" : "git",	
-		"url" : "https://github.com/Microsoft/TypeScript.git"  
+		"url" : "https://github.com/yjtx/yjtx-file-server.git"  
 	},
 	"preferGlobal" : true,
-	"main" : "./bin/typescriptServices.js",
+	"main" : "./tools/run.js",
 	"bin" : { 
-		"tsc" : "./bin/tsc" 
+		"yjtx" : "./bin/yjtx"
 	},
 	"engines" : { 
 		"node" : ">=0.8.0" 
-	},
-	"devDependencies": {
-		"jake" : "latest",
-		"mocha" : "latest",
-		"chai" : "latest",
-		"browserify" : "latest",
-		"istanbul": "latest",
-		"codeclimate-test-reporter": "latest"
-	},
-	"scripts": {
-		"test": "jake generate-code-coverage"
 	}
 }

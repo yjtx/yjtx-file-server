@@ -53,8 +53,8 @@ function getOption(type) {
 exports.getOption = getOption;
 var path_lib = require("path");
 function getParserRoot() {
-    var path = escapePath(process.argv[1]);
-    return path_lib.dirname(path) + "/";
+    var path = escapePath(process["mainModule"]['filename']);
+    return process.env.YJTX_SERVER_PATH || path_lib.dirname(path) + "/";
 }
 exports.getParserRoot = getParserRoot;
 function escapePath(path) {

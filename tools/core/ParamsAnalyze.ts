@@ -54,8 +54,8 @@ export function getOption(type) {
 import path_lib = require("path");
 
 export function getParserRoot() {
-    var path = escapePath(process.argv[1]);
-    return path_lib.dirname(path)+"/";
+    var path = escapePath(process["mainModule"]['filename']);
+    return process.env.YJTX_SERVER_PATH || path_lib.dirname(path)+"/";
 }
 
 function escapePath(path) {
