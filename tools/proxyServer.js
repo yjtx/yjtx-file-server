@@ -5,6 +5,7 @@ var http = require('http');
 var localFiles_1 = require("./localFiles");
 var dirHtml_1 = require("./dirHtml");
 var file = require('./core/FileUtil');
+var path = require("path");
 var params = require('./core/ParamsAnalyze');
 var ProxyServer = (function () {
     function ProxyServer() {
@@ -18,7 +19,8 @@ var ProxyServer = (function () {
         this.tempHtml = new dirHtml_1.DirHtml();
         this.server = http.createServer(this.handleRequest.bind(this));
         this.server.listen(this.port, function () {
-            addLog(0, "started", "proxy Server listening on: " + _this.host + ":" + _this.port);
+            console.log("listening on: \033[1;32;1m" + _this.host + ":" + _this.port + "\033[0m");
+            console.log("local root: \033[1;32;1m" + path.resolve(_this.localUrl) + "\033[0m");
         });
         this.server.addListener("error", function () {
             process.exit(1501);
@@ -47,16 +49,5 @@ var ProxyServer = (function () {
     return ProxyServer;
 })();
 exports.ProxyServer = ProxyServer;
-function addLog(code, action, message) {
-    var data = {
-        code: code,
-        ide: "proxyserver",
-        data: {
-            action: action,
-            message: message
-        }
-    };
-    console.log(JSON.stringify(data));
-}
 
 //# sourceMappingURL=proxyServer.js.map

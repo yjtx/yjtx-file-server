@@ -10,6 +10,7 @@ import {LocalFiles} from "./localFiles";
 import {DirHtml} from "./dirHtml";
 
 import file = require('./core/FileUtil');
+import path = require("path");
 
 import params = require('./core/ParamsAnalyze');
 
@@ -31,7 +32,8 @@ export class ProxyServer {
 
         this.server = http.createServer(this.handleRequest.bind(this));
         this.server.listen(this.port, () => {
-            addLog(0, "started", "proxy Server listening on: " + this.host + ":" + this.port);
+            console.log("listening on: \033[1;32;1m" + this.host + ":" + this.port + "\033[0m");
+            console.log("local root: \033[1;32;1m" + path.resolve(this.localUrl) + "\033[0m");
         });
         this.server.addListener("error", function () {
             process.exit(1501);
@@ -68,16 +70,4 @@ export class ProxyServer {
             this.localFiles.onGet(tempUrl, null, response);
         }
     }
-}
-
-function addLog(code:number, action:string, message:string):void {
-    var data = {
-        code: code,
-        ide: "proxyserver",
-        data: {
-            action: action,
-            message: message
-        }
-    };
-    console.log(JSON.stringify(data));
 }

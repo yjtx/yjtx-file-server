@@ -6,6 +6,6 @@ var path = require('path');
 if(!fs.existsSync(YJTX_SERVER_PATH)){
     YJTX_SERVER_PATH = process.env.YJTX_SERVER_PATH = path.join(process.mainModule.filename, "../../tools");
 }
-console.log("13 " + path.resolve(YJTX_SERVER_PATH));
+//console.log("13 " + path.resolve(YJTX_SERVER_PATH));
 
 require('../tools/run.js');

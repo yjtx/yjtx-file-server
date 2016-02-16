@@ -1,15 +1,6 @@
-var exec = require('child_process').exec, path = require('path');
-/**
- * open a file or uri using the default application for the file type.
- *
- * @return {ChildProcess} - the child process object.
- * @param {string} target - the file/uri to open.
- * @param {string} appName - (optional) the application to be used to open the
- *      file (for example, "chrome", "firefox")
- * @param {function(Error)} callback - called with null on success, or
- *      an error object that contains a property 'code' with the exit
- *      code of the process.
- */
+var child_process = require('child_process');
+var exec = child_process.exec;
+var path = require('path');
 function open(target) {
     var opener;
     switch (process.platform) {
@@ -26,7 +17,7 @@ function open(target) {
     if (process.env.SUDO_USER) {
         opener = 'sudo -u ' + process.env.SUDO_USER + ' ' + opener;
     }
-    return exec(opener + ' "' + escape(target) + '"');
+    return exec(opener + ' "' + escape(target) + '"', null);
 }
 exports.open = open;
 function escape(s) {
