@@ -83,7 +83,12 @@ export class ProxyServer {
             }
         }
         else {
-            this.localFiles.onGet(tempUrl, null, response);
+            var mineType = request.headers.accept;
+            if (mineType) {
+                mineType = mineType.split(",")[0];
+            }
+
+            this.localFiles.onGet(tempUrl, mineType, response);
         }
     }
 }

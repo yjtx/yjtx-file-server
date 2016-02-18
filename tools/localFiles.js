@@ -56,13 +56,16 @@ var LocalFiles = (function () {
                         response.end(err.toString());
                     }
                     else {
-                        var contentType = self.getMineType(mineType) || mine[ext] || "text/plain";
-                        response.writeHead(200, {
+                        var contentType = self.getMineType(mineType) || mine[ext];
+                        var resInfo = {
                             'Accept-Ranges': 'bytes',
-                            'Content-Type': contentType,
                             'Content-Length': file.length,
                             'Access-Control-Allow-Origin': '*'
-                        });
+                        };
+                        if (contentType) {
+                            resInfo["Content-Type"] = contentType;
+                        }
+                        response.writeHead(200, resInfo);
                         response.write(file, "binary");
                         response.end();
                     }
