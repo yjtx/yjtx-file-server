@@ -58,11 +58,13 @@ export class ProxyServer {
     }
 
     private handleRequest(request, response):void {
+        var requestUrl:string = request.url;
+        requestUrl = decodeURIComponent(requestUrl);
 
-        var tempUrl:string = file.joinPath(this.localUrl, this.getPath(request.url));
+        var tempUrl:string = file.joinPath(this.localUrl, this.getPath(requestUrl));
 
-        if (request.url.indexOf("__yjtx__") >= 0) {//内部文件
-            this.localFiles.onGet(file.joinPath(params.getParserRoot(), "template", request.url.substring(request.url.indexOf("__yjtx__"))), null, response);
+        if (requestUrl.indexOf("__yjtx__") >= 0) {//内部文件
+            this.localFiles.onGet(file.joinPath(params.getParserRoot(), "template", requestUrl.substring(requestUrl.indexOf("__yjtx__"))), null, response);
             return;
         }
 

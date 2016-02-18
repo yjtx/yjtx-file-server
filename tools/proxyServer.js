@@ -40,9 +40,11 @@ var ProxyServer = (function () {
         return url.substring(0, Math.min(index1, index2));
     };
     ProxyServer.prototype.handleRequest = function (request, response) {
-        var tempUrl = file.joinPath(this.localUrl, this.getPath(request.url));
-        if (request.url.indexOf("__yjtx__") >= 0) {
-            this.localFiles.onGet(file.joinPath(params.getParserRoot(), "template", request.url.substring(request.url.indexOf("__yjtx__"))), null, response);
+        var requestUrl = request.url;
+        requestUrl = decodeURIComponent(requestUrl);
+        var tempUrl = file.joinPath(this.localUrl, this.getPath(requestUrl));
+        if (requestUrl.indexOf("__yjtx__") >= 0) {
+            this.localFiles.onGet(file.joinPath(params.getParserRoot(), "template", requestUrl.substring(requestUrl.indexOf("__yjtx__"))), null, response);
             return;
         }
         if (file.isDirectory(tempUrl)) {
